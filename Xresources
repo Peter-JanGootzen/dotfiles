@@ -1,0 +1,126 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+! ! special
+! *.foreground:   #31363B
+! *.background:   #E7E8EB
+! *.cursorColor:  #31363B
+! 
+! !black
+! *color0:     #373737
+! *color8:     #474747
+! !red (red)
+! *color1:     #CC4141
+! *color9:     #BA2929
+! !green (green)
+! *color2:     #43803D
+! *color10:    #2F632A
+! !yellow (blue)
+! *color3:     #7882BF
+! *color11:    #596196
+! !blue (brown)
+! *color4:     #DBAB3B
+! *color12:    #C79520
+! !magenta (magenta)
+! *color5:     #BF849C
+! *color13:    #B06A86
+! !cyan (light blue)
+! *color6:     #6AA9B0
+! *color14:    #4D8B91
+! !white (pink)
+! *color7:     #E39036
+! *color15:    #C97820
+
+ *.foreground: #F8F8F2
+ *.background: #232629
+
+ *.color0:     #000000
+ *.color8:     #4D4D4D
+ *.color1:     #FF5555
+ *.color9:     #FF6E67
+ *.color2:     #50FA7B
+ *.color10:    #5AF78E
+ *.color3:     #F1FA8C
+ *.color11:    #F4F99D
+ *.color4:     #BD93F9
+ *.color12:    #CAA9FA
+ *.color5:     #FF79C6
+ *.color13:    #FF92D0
+ *.color6:     #8BE9FD
+ *.color14:    #9AEDFE
+ *.color7:     #BFBFBF
+ *.color15:    #E6E6E6
+
+!!BLACK
+!urxvt*color0:           	#6B6B6B
+!urxvt*color8:           	#828282
+!!RED
+!urxvt*color1:           	#A35861
+!urxvt*color9:	        	#DB5858
+!!GREEN
+!urxvt*color2:   	        #558F51
+!urxvt*color10:          	#43B23D
+!!YELLOW
+!urxvt*color3:           	#9C7854
+!urxvt*color11:          	#BA9D22
+!!BLUE
+!urxvt*color4:           	#598499
+!urxvt*color12:          	#7FA5EB
+!!MAGENTA
+!urxvt*color5:           	#A86897
+!urxvt*color13:          	#E36FB8
+!!CYAN
+!urxvt*color6:           	#478F89
+!urxvt*color14:          	#25B8C2
+!!WHITE
+!urxvt*color7:           	#919191
+!urxvt*color15:          	#A4A4A4
+
+
+rofi.font:              tewi 8
+rofi.location:          0
+rofi.color-enabled:     true
+rofi.color-window:      #232629, #808280, #ffffff
+rofi.color-normal:      #232629, #ffffff, #232629, #808280, #ffffff
+rofi.color-active:      #232629, #ffffff, #232629, #808280, #ffffff
+rofi.color-urgent:      #232629, #ffffff, #232629, #ffffff, #000000
+rofi.separator-style:   solid
+rofi.fullscreen:        false
+rofi.padding:           20
+rofi.hide-scrollbar:    true
+rofi.line-margin:       4
+rofi.yoffset:           0
+rofi.xoffset:           0
+rofi.width:             15
+rofi.lines:             8
+
+
+Xcursor.theme: capitaine-cursors
+Xcursor.size:  0
+
+
+!URxvt*font: -*-tewi-medium-r-*-*-11-*-*-*-*-*-*-*
+!URxvt*boldFont: -*-tewi-medium-r-*-*-11-*-*-*-*-*-*-*
+!URxvt*italicFont: -*-tewi-medium-r-*-*-11-*-*-*-*-*-*-*
+!URxvt*bolditalicFont: -*-tewi-medium-r-*-*-11-*-*-*-*-*-*-*
+!
+!URxvt.depth: 0
+!URxvt.internalBorder: 20
+!URxvt*scrollBar:                      false
+!URxvt*mouseWheelScrollPage:           false
+!URxvt*cursorBlink:                    true
+!URxvt*saveLines:                      5000
+
+URxvt*scrollBar: false
+
+! FONT
+URxvt*font: xft:Terminus:size=9
+
+! BORDER
+URxvt*borderWidth: 0
+URxvt*internalBorder: 24
