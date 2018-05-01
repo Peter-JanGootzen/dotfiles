@@ -66,7 +66,7 @@ export VISUAL=nvim
 export BROWSER=/usr/bin/firefox-beta-bin
 export ANDROID_HOME=/home/$USER/Android/Sdk/
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
-# Add ruby gem bins 
+# Add ruby gem bins
 export PATH=~/.gem/ruby/2.5.0/bin:$PATH
 # Add composer(php) bin folder to the path
 export PATH=~/.config/composer/vendor/bin:$PATH
@@ -77,6 +77,6 @@ export WINEPREFIX=~/.wine
 
 if [ $(tty) = "/dev/tty1" ]; then
     startx
-elif [[ $(tty) == *"/dev/tty"* ]]; then
+elif [[ $(tty) == "/dev/tty"* ]]; then
     cowsay "What are you doing here?"
 fi

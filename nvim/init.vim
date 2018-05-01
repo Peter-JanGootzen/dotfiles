@@ -14,9 +14,9 @@
 "                               |EEEEEEEEZ' .DDDDDDDDNNNF`                                       "
 "                               |888888Z' .DDDDDDDDNNNF`                                         "
 "                               |8888Z' ,DDDDDDDNNNNF`                                           "
-"                               |88Z'    "DNNNNNNN"                                              "
-"                               '"'        "MMMM"                                                "
-"                                            ""                                                  "
+"                               |88Z'    /"DNNNNNNN"                                              "
+"                               '"'        /"MMMM"                                                "
+"                                            /""                                                  "
 "                                                                                                "
 "      ___    ____                                            __   _         _    ________  ___  "
 "     /   |  / / /  __  ______  __  __   ____  ___  ___  ____/ /  (_)____   | |  / /  _/  |/  /  "
@@ -51,16 +51,16 @@ Plug 'vimwiki/vimwiki'                    " Personal Wiki
 Plug 'kien/rainbow_parentheses.vim'       " Rainbow Parentheses
 
 "-------------------=== Languages support ===-------------------
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Async completions
-Plug 'w0rp/ale'                                               " Async linting engine
-Plug 'Shougo/neosnippet.vim'                                  " Snippets plugin
-Plug 'Shougo/neosnippet-snippets'                             " Snippets db
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Async completions
+"Plug 'w0rp/ale'                                               " Async linting engine
+"Plug 'Shougo/neosnippet.vim'                                  " Snippets plugin
+"Plug 'Shougo/neosnippet-snippets'                             " Snippets db
 Plug 'sheerun/vim-polyglot'                                   " Languages syntax
-Plug 'joonty/vdebug'                                          " XDebug
+"Plug 'joonty/vdebug'                                          " XDebug
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'                   " Fuzzy searcher
-Plug 'mhinz/vim-startify'                 " Nice startup screen
+"Plug 'mhinz/vim-startify'                 " Nice startup screen
 call plug#end()
 
 filetype plugin indent on

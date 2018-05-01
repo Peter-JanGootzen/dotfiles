@@ -262,15 +262,13 @@ mode "resize" {
 }
 
 # Autostart applications
-exec --no-startup-id xrandr --output DisplayPort-0 --primary --mode 1920x1080 --pos 4480x0 --rotate normal --output DVI-1 --off --output DVI-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --mode 2560x1080 --pos 1920x0 --rotate normal
-exec --no-startup-id ~/bin/launch-polybar.sh
+exec --no-startup-id polybar main
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift -b 1.0:0.6
 exec --no-startup-id signal-desktop --start-in-tray
 exec --no-startup-id stack
-exec --no-startup-id blueman-applet
 exec --no-startup-id mpd
 
 # Theme colors
