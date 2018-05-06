@@ -25,7 +25,8 @@ Xft.lcdfilter: lcddefault
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
 
-rofi.font:              tewi 8
+rofi.modi:              drun,run
+rofi.font:              xos4 Terminus 9
 rofi.location:          0
 rofi.color-enabled:     true
 rofi.color-window:      #232629, #808280, #ffffff
@@ -39,19 +40,28 @@ rofi.hide-scrollbar:    true
 rofi.line-margin:       4
 rofi.yoffset:           0
 rofi.xoffset:           0
-rofi.width:             15
+rofi.width:             18
 rofi.lines:             8
 
 Xcursor.theme: capitaine-cursors
 Xcursor.size:  0
 
-URxvt*font: -*-tewi-medium-r-*-*-11-*-*-*-*-*-*-*
-URxvt*boldFont: -*-tewi-medium-r-*-*-11-*-*-*-*-*-*-*
-URxvt*italicFont: -*-tewi-medium-r-*-*-11-*-*-*-*-*-*-*
-URxvt*bolditalicFont: -*-tewi-medium-r-*-*-11-*-*-*-*-*-*-*
-URxvt.depth: 0
+; Currently using st with basicly the same settings
+; My st fork can be found over at https://github.com/Peter-JanGootzen/st
+URxvt.font: xft:xos4 Terminus:size=12
+URxvt.boldFont: xft:xos4 Terminus:bold:size=12
 URxvt.internalBorder: 10
-URxvt*scrollBar:                      false
-URxvt*mouseWheelScrollPage:           false
-URxvt*cursorBlink:                    true
-URxvt*saveLines:                      5000
+URxvt.scrollBar:                      false
+URxvt.mouseWheelScrollPage:           false
+URxvt.cursorBlink:                    false
+URxvt.saveLines:                      5000
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
+URxvt.perl-ext-common: default,matcher,resize-font
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard

@@ -1,12 +1,12 @@
 set font                        "Overpass 10"
 set default-bg                  "#232629" #00
-set default-fg                  "#ebdbb2" #01
+set default-fg                  "#dfdfdf" #01
 
-set statusbar-fg                "#ebdbb2" #04
 set statusbar-bg                "#262626" #01
+set statusbar-fg                "#dfdfdf" #04
 
 set inputbar-bg                 "#232629" #00 currently not used
-set inputbar-fg                 "#ebdbb2" #02
+set inputbar-fg                 "#dfdfdf" #02
 
 set notification-error-bg       "#232629" #08
 set notification-error-fg       "#cc241d" #00
@@ -15,19 +15,19 @@ set notification-warning-bg     "#232629" #08
 set notification-warning-fg     "#d79921" #00
 
 set highlight-color             "#232629" #0A
-set highlight-active-color      "#ebdbb2" #0D
+set highlight-active-color      "#dfdfdf" #0D
 
 set completion-highlight-fg     "#4e4e4e" #02
 set completion-highlight-bg     "#87afaf" #0C
 
 set completion-bg               "#4e4e4e" #02
-set completion-fg               "#ebdbb2" #0C
+set completion-fg               "#dfdfdf" #0C
 
 set notification-bg             "#232629" #0B
 set notification-fg             "#458588" #00
 
 set recolor-lightcolor          "#232629" #00
-set recolor-darkcolor           "#ebdbb2" #06
+set recolor-darkcolor           "#dfdfdf" #06
 set recolor                     "true"
 
 # setting recolor-keep true will keep any color your pdf has.
