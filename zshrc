@@ -76,7 +76,7 @@ export WINEARCH=win32
 export WINEPREFIX=~/.wine
 
 if [ $(tty) = "/dev/tty1" ]; then
-    startx
+    exec startx
 elif [[ $(tty) == "/dev/tty"* ]]; then
     cowsay "What are you doing here?"
 fi

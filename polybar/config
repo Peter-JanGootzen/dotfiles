@@ -46,7 +46,7 @@ font-1 = Wuncon Siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = mpd
-modules-right = battery date
+modules-right = unread_mail github current_draw battery date
 
 tray-position = right
 tray-padding = 2
@@ -67,6 +67,7 @@ tray-padding = 2
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+enable-ipc = true
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -349,6 +350,34 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/current_draw]
+type = custom/script
+
+exec = current_draw
+exec-if = is_discharging
+interval = 10
+
+label = %output%W
+format-prefix = 
+
+[module/github]
+type = internal/github
+
+token = ${file:~/.github_access_token}
+
+empty-notifications = true
+label =  %notifications%
+
+interval = 10
+
+[module/unread_mail]
+type = custom/ipc
+
+hook-0 = unread_mail
+
+format =  <output>
+initial = 1
 
 [settings]
 screenchange-reload = true

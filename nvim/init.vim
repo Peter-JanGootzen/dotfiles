@@ -49,18 +49,18 @@ Plug 'tpope/vim-fugitive'                 " Gstatus and stuff
 Plug 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
 Plug 'vimwiki/vimwiki'                    " Personal Wiki
 Plug 'kien/rainbow_parentheses.vim'       " Rainbow Parentheses
+Plug 'dylanaraps/wal.vim'                 " wal color scheme
 
 "-------------------=== Languages support ===-------------------
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Async completions
 "Plug 'w0rp/ale'                                               " Async linting engine
 "Plug 'Shougo/neosnippet.vim'                                  " Snippets plugin
 "Plug 'Shougo/neosnippet-snippets'                             " Snippets db
-Plug 'sheerun/vim-polyglot'                                   " Languages syntax
+Plug 'sheerun/vim-polyglot'                                    " Languages syntax
 "Plug 'joonty/vdebug'                                          " XDebug
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'                   " Fuzzy searcher
-"Plug 'mhinz/vim-startify'                 " Nice startup screen
 call plug#end()
 
 filetype plugin indent on
@@ -172,68 +172,5 @@ set updatetime=100
 " Auto start deoplete
 let g:deoplete#enable_at_startup = 1
 
-" Custom FZF with file previews and devicons
-" No ctrl+x, ctrl+v, ctrl+t though and a lot slower :(
-function! Fzf_dev_preview()
-  let l:fzf_files_options =
-        \ '--preview "echo {} | tr -s \" \" \"\n\" | tail -1 | xargs rougify | head -'.&lines.'"'
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(l:files)
-  endfunction
-
-  function! s:prepend_icon(candidates)
-    let l:result = []
-    for l:candidate in a:candidates
-      let l:filename = fnamemodify(l:candidate, ':p:t')
-      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-      call add(l:result, printf('%s %s', l:icon, l:candidate))
-    endfor
-
-    return l:result
-  endfunction
-
-  function! s:edit_file(item)
-    let l:parts = split(a:item, ' ')
-    let l:file_path = get(l:parts, 1, '')
-    execute 'silent e' l:file_path
-  endfunction
-
-  call fzf#run({
-        \ 'source': <sid>files(),
-        \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m ' . l:fzf_files_options,
-        \ 'down':    '40%' })
-endfunction
-
-" Custom FZF with devicons
-" No ctrl+x, ctrl+v, ctrl+t though and a lot slower :(
-function! Fzf_dev()
-  function! s:files()
-    let files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(files)
-  endfunction
-
-  function! s:prepend_icon(candidates)
-    let result = []
-    for candidate in a:candidates
-      let filename = fnamemodify(candidate, ':p:t')
-      let icon = WebDevIconsGetFileTypeSymbol(filename, isdirectory(filename))
-      call add(result, printf("%s %s", icon, candidate))
-    endfor
-
-    return result
-  endfunction
-
-  function! s:edit_file(item)
-    let parts = split(a:item, ' ')
-    let file_path = get(parts, 1, '')
-    execute 'silent e' file_path
-  endfunction
-
-  call fzf#run({
-        \ 'source': <sid>files(),
-        \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m -x +s',
-        \ 'down':    '40%' })
-endfunction
+" Restricting mutt mail files to 72 characters text width
+au BufRead /tmp/mutt-* set tw=72

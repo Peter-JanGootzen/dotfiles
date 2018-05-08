@@ -1,0 +1,18 @@
+#!/bin/bash
+
+i3-msg "workspace 4; append_layout /home/peter-jan/.config/i3/workspace-4.json"
+
+sleep .3
+
+i3-msg exec "workspace 4; exec st -e zsh -c 'neomutt && zsh'"
+sleep .3
+i3-msg exec "workspace 4; exec st -e zsh -c 'ncmpcpp -s clock && zsh'"
+sleep .3
+i3-msg exec "workspace 4; exec st -e zsh -c 'htop && zsh'"
+sleep .3
+i3-msg exec "workspace 4; exec st -e zsh -c 'sudo powertop && zsh'"
+sleep .3
+i3-msg exec "workspace 4; exec st -e zsh -c 'journalctl -f && zsh'"
+sleep .3
+
+i3-msg "workspace 1"
