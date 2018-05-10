@@ -27,6 +27,7 @@ alias SCHPR="cd ~/SCHPR/INF/"
 alias toolhub="cd ~/ToolHub/"
 ## Search file contents, respects .gitignore
 alias grop="ag --nobreak --nonumbers --noheading . | fzf"
+alias laravel="sudo systemctl start mariadb; composer install; npm install; npm run dev; php artisan migrate:fresh --seed; notify-send laravel done; php artisan serve"
 
 ## Plugins section: Enable fish style features
 # Use syntax highlighting

@@ -55,8 +55,8 @@ bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioStop exec mpc stop
 
 # Backlight
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && notify-send $(python -c "print(round($(xbacklight -get)))")
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && notify-send $(python -c "print(round($(xbacklight -get)))")
+bindsym XF86MonBrightnessDown exec light -U 10 && notify-send Brightness $(python -c "print(round($(light -G)))")
+bindsym XF86MonBrightnessUp exec light -A 10 && notify-send Brightness $(python -c "print(round($(light -G)))")
 
 # tlp mode switching
 bindsym $mod+Shift+F11 exec sudo tlp bat && notify-send "TLP" "bat"
