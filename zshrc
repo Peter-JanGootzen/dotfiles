@@ -25,8 +25,14 @@ alias gitu='git add . && git commit && git push'
 alias ls="ls --color=auto"
 alias SCHPR="cd ~/SCHPR/INF/"
 alias toolhub="cd ~/SCHPR/INF/ToolHub/"
-## Search file contents, respects .gitignore
+# Search file contents, respects .gitignore
 alias grop="ag --nobreak --nonumbers --noheading . | fzf"
+alias q="exit"
+# Machine specific aliases
+if [[ $(uname -n) == 'SpaceMonkey' ]]; then
+    alias alsamixer="alsamixer -c 0"
+fi
+
 
 ## Plugins section: Enable fish style features
 # Use syntax highlighting
@@ -61,10 +67,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 bindkey "^[[24~" clear-screen
 
 export QT_QPA_PLATFORMTHEME=qt5ct
+export GTK2_RC_FILES=$HOME/.gtkrc-2.0
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=/usr/bin/firefox-beta-bin
-export ANDROID_HOME=/home/$USER/Android/Sdk/
+export ANDROID_HOME=$HOME/Android/Sdk/
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 # Add ruby gem bins 
 export PATH=~/.gem/ruby/2.5.0/bin:$PATH
@@ -74,6 +81,10 @@ export PATH=~/.config/composer/vendor/bin:$PATH
 export PATH=~/bin:$PATH
 export WINEARCH=win32
 export WINEPREFIX=~/.wine
+# Machine specific variables
+if [[ $(uname -n) == 'SpaceMonkey' ]]; then
+    export MUSIC=/mnt/storage/Media/Music
+fi
 
 if [ $(tty) = "/dev/tty1" ]; then
     startx
