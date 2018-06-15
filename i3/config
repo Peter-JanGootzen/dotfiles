@@ -75,10 +75,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left 2px
-bindsym $mod+Shift+k move down 2px
-bindsym $mod+Shift+l move up 2px
-bindsym $mod+Shift+semicolon move right 2px
+bindsym $mod+Shift+h move left 2px
+bindsym $mod+Shift+j move down 2px
+bindsym $mod+Shift+k move up 2px
+bindsym $mod+Shift+l move right 2px
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left 40px
@@ -227,6 +227,7 @@ mode "resize" {
 }
 
 # Autostart applications
+exec --no-startup-id compton
 exec --no-startup-id polybar main
 exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/in-space-\#232629.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

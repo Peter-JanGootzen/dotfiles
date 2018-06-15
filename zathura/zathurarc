@@ -41,7 +41,7 @@ map a adjust_window best-fit
 map s adjust_window width
 map f follow
 map <Tab> toggle_index
-map k scroll down
-map l scroll up
-map j scroll left
-map ; scroll right
+map l scroll left
+map j scroll down
+map k scroll up
+map h scroll right

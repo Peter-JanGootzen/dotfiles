@@ -26,7 +26,6 @@
 "                   /_/                                                                          "
 "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
-set nocompatible              " required
 filetype off                  " required
 set hidden
 
@@ -52,14 +51,16 @@ Plug 'kien/rainbow_parentheses.vim'       " Rainbow Parentheses
 Plug 'dylanaraps/wal.vim'                 " wal color scheme
 
 "-------------------=== Languages support ===-------------------
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Async completions
-"Plug 'w0rp/ale'                                               " Async linting engine
-"Plug 'Shougo/neosnippet.vim'                                  " Snippets plugin
-"Plug 'Shougo/neosnippet-snippets'                             " Snippets db
-Plug 'sheerun/vim-polyglot'                                    " Languages syntax
-"Plug 'joonty/vdebug'                                          " XDebug
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Async completions
+Plug 'w0rp/ale'                                               " Async linting engine
+Plug 'Shougo/neosnippet.vim'                                  " Snippets plugin
+Plug 'Shougo/neosnippet-snippets'                             " Snippets db
+Plug 'sheerun/vim-polyglot'                                   " Languages syntax
+Plug 'joonty/vdebug'                                          " XDebug
+Plug 'tpope/vim-sleuth'
+Plug 'alvan/vim-closetag'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'                   " Fuzzy searcher
 call plug#end()
 
@@ -77,11 +78,12 @@ set number                                  " show line numbers
 set ruler
 set ttyfast                                 " terminal acceleration
 
-set tabstop=4                               " 4 whitespaces for tabs visual presentation
-set shiftwidth=4                            " shift lines by 4 spaces
-set smarttab                                " set tabs for a shifttabs logic
-set expandtab                               " expand tabs into spaces
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 set autoindent                              " indent when moving to the next line while writing code
+set smarttab                                " set tabs for a shifttabs logic
 
 set showmatch                               " shows matching part of bracket pairs (), [], {}
 
@@ -95,22 +97,8 @@ set scrolloff=5                            " let 10 lines before/after cursor du
 set clipboard=unnamedplus                   " enable systemwide clipboard
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
-" Tabs / Buffers settings
-tab sball
-set switchbuf=useopen
-set laststatus=2
-"nmap <F9> :bprev<CR>
-"nmap <F10> :bnext<CR>
-
 " Relative Numbering
-nnoremap <F4> :set relativenumber!<CR>
-" This auto switches relativenumbers, does not work 100% nicely, gets annoying
-" fast
-" augroup numbertoggle
-" autocmd!
-" autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-" autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-" augroup END
+nnoremap <leader>rn :set relativenumber!<CR>
 
 " Search settings
 set incsearch                                 " incremental search
@@ -146,25 +134,24 @@ au Syntax * RainbowParenthesesLoadBraces
 " Indent Guides Settings
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
-
-" enable mouse with scrolling
-if has('mouse')
-    set mouse=a
-endif
-
 " Keybindings
 let mapleader=' '
 nnoremap <silent> <leader><leader> :w<CR>
 nnoremap <silent> <leader>qw :wq<CR>
+nnoremap <silent> <leader>bd :bd<CR>
 nnoremap <silent> <leader>qq :q<CR>
 nnoremap <silent> <leader>qf :q!<CR>
 nnoremap <silent> <leader>ff :Files<CR>
+nnoremap <silent> <leader>fg :GFiles<CR>
 nnoremap <silent> <leader>fd :call Fzf_dev()<CR>
 nnoremap <silent> <leader>bb :Buffers<CR>
 nnoremap <silent> <leader>ag :Ag<CR>
 nnoremap <silent> <leader>src :so $MYVIMRC<CR>
 nnoremap <silent> <leader>erc :tabe $MYVIMRC<CR>
 nnoremap <silent> <leader>oo :NERDTreeToggle<CR>
+nnoremap <silent> <leader>sh :GitGutterStageHunk<CR>
+nnoremap <silent> <leader>nh :GitGutterNextHunk<CR>
+nnoremap <silent> <leader>ph :GitGutterPrevHunk<CR>
 
 " Set gitgutter to update every 100ms
 set updatetime=100
@@ -173,4 +160,18 @@ set updatetime=100
 let g:deoplete#enable_at_startup = 1
 
 " Restricting mutt mail files to 72 characters text width
-au BufRead /tmp/mutt-* set tw=72
+au BufRead ~/.config/mutt/tmp set tw=72
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+let g:ale_sign_column_always = 1
+let g:ale_completion_enabled = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+iabbrev </ </<C-X><C-O>
+let g:closetag_filenames = '*.html,*.vue'
+
+

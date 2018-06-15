@@ -2,7 +2,7 @@
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
 setopt nocaseglob                                               # Case insensitive globbing
 setopt rcexpandparam                                            # Array expension with parameters
-setopt nocheckjobs                                              # Don't warn about running processes when exiting
+setopt nocheckjobs                                              # Don\'t warn about running processes when exiting
 setopt numericglobsort                                          # Sort filenames numerically when it makes sense
 setopt nobeep                                                   # No beep
 setopt appendhistory                                            # Immediately append history instead of overwriting
@@ -15,19 +15,20 @@ zstyle ':completion:*' rehash true                              # automatically 
 HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
-WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don\'t consider certain characters part of the word
 
 ## Alias section
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
-alias gitu='git add . && git commit && git push'
 alias ls="ls --color=auto"
 alias SCHPR="cd ~/SCHPR/INF/"
 alias toolhub="cd ~/ToolHub/"
+alias stratego="cd ~/Code/INF/stratego/"
 ## Search file contents, respects .gitignore
 alias grop="ag --nobreak --nonumbers --noheading . | fzf"
 alias laravel="sudo systemctl start mariadb; composer install; npm install; npm run dev; php artisan migrate:fresh --seed; notify-send laravel done; php artisan serve"
+alias cpu="watch -n.5 'cat /proc/cpuinfo | grep \"^[c]pu MHz\"'"
 
 ## Plugins section: Enable fish style features
 # Use syntax highlighting
@@ -62,6 +63,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 bindkey "^[[24~" clear-screen
 
 export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE=gtk2
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=/usr/bin/firefox-beta-bin
