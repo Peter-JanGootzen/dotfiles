@@ -1,0 +1,2 @@
+#!/bin/bash
+cat /proc/acpi/bbswitch | awk '{ print $NF }'

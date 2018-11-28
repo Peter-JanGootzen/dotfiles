@@ -47,7 +47,7 @@ font-1 = Wuncon Siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = mpd
-modules-right = unread_mail github current_draw battery date
+modules-right = unread_mail current_draw gpu battery date
 
 tray-position = right
 tray-padding = 2
@@ -361,6 +361,16 @@ interval = 10
 
 label = %output%W
 format-prefix = 
+
+[module/gpu]
+type = custom/script
+
+exec = gpu_status
+
+interval = 10
+
+label = %output%
+format-prefix = 
 
 [module/github]
 type = internal/github
