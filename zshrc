@@ -28,6 +28,10 @@ alias grop="ag --nobreak --nonumbers --noheading . | fzf"
 alias cpu="watch -n.5 'cat /proc/cpuinfo | grep \"^[c]pu MHz\"'"
 alias q="exit"
 alias m="ncmpcpp"
+# Machine specific aliases
+if [[ $(uname -n) == 'SpaceMonkey' ]]; then
+    alias alsamixer="alsamixer -c 0"
+fi
 
 ## Plugins section: Enable fish style features
 # Use syntax highlighting
@@ -63,6 +67,7 @@ bindkey "^[[24~" clear-screen
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=gtk2
+export GTK2_RC_FILES=$HOME/.gtkrc-2.0
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=/usr/bin/firefox-beta-bin
@@ -85,6 +90,10 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # Add npm bins to the path
 export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=$HOME/.node_modules
+# Machine specific variables
+if [[ $(uname -n) == 'SpaceMonkey' ]]; then
+    export MUSIC=/mnt/storage/Media/Music
+fi
 
 if [ $(tty) = "/dev/tty1" ]; then
     exec startx
