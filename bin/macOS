@@ -1,0 +1,3 @@
+#/usr/bin/sh
+~/VM/OSX-KVM/boot-macOS-Mojave.sh &
+disown

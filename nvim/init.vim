@@ -56,7 +56,8 @@ Plug 'w0rp/ale'                                               " Async linting en
 Plug 'Shougo/neosnippet.vim'                                  " Snippets plugin
 Plug 'Shougo/neosnippet-snippets'                             " Snippets db
 Plug 'sheerun/vim-polyglot'                                   " Languages syntax
-Plug 'joonty/vdebug'                                          " XDebug
+" I dont debug in nvim atm
+"Plug 'joonty/vdebug'                                          " XDebug
 Plug 'tpope/vim-sleuth'
 Plug 'alvan/vim-closetag'
 

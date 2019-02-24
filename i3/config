@@ -33,15 +33,18 @@ bindsym $mod+Return exec st
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -modi run -show drun
+bindsym $mod+d exec --no-startup-id rofi -modi run -show drun -show-icons
+bindsym $mod+p exec --no-startup-id bwmenu
 
 bindsym $mod+Ctrl+m exec pavucontrol
 
 # Screenshot keybindings
-bindsym Print --release exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Print exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print exec --no-startup-id i3-scrot -s
 
+# i3lock keybinding
+bindsym $mod+Escape exec --no-startup-id i3lock -i /home/peter-jan/Pictures/Wallpapers/i3lock.png
 
 # Monitor keybindings
 bindsym $mod+Shift+F1 exec --no-startup-id monitor single
@@ -55,12 +58,12 @@ bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioStop exec mpc stop
 
 # Backlight
-bindsym XF86MonBrightnessDown exec light -U 10 && notify-send Brightness $(python -c "print(round($(light -G)))")
-bindsym XF86MonBrightnessUp exec light -A 10 && notify-send Brightness $(python -c "print(round($(light -G)))")
+bindsym XF86MonBrightnessDown exec light -U 10 && notify-send.sh --replace=1 Brightness $(python -c "print(round($(light -G)))")
+bindsym XF86MonBrightnessUp exec light -A 10 && notify-send.sh --replace=1 Brightness $(python -c "print(round($(light -G)))")
 
 # tlp mode switching
-bindsym $mod+Shift+F11 exec sudo tlp bat && notify-send "TLP" "bat"
-bindsym $mod+Shift+F12 exec sudo tlp ac && notify-send "TLP" "ac"
+bindsym $mod+Shift+F11 exec sudo tlp bat && notify-send.sh --replace=2 "TLP" "bat"
+bindsym $mod+Shift+F12 exec sudo tlp ac && notify-send.sh --replace=2 "TLP" "ac"
 
 # change focus vimlike
 bindsym $mod+h focus left
@@ -109,7 +112,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
@@ -192,6 +195,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Main"] floating enable # Java, make the class with main() called Main
+for_window [title="QEMU"] floating enable floating_maximum_size 1680 x 1050 border normal
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -234,9 +238,10 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id udiskie
 exec --no-startup-id nm-applet
 exec --no-startup-id pa-applet
-exec --no-startup-id redshift
-exec --no-startup-id stack
+exec --no-startup-id redshift-gtk
+exec --no-startup-id stack-client
 exec --no-startup-id mpd
+exec --no-startup-id signal-desktop --start-in-tray
 
 # Autosetup my 4th workspace, this script can be found in ~/bin/workspace4
 #exec --no-startup-id workspace4

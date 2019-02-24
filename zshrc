@@ -12,7 +12,7 @@ setopt autocd                                                   # if only direct
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 zstyle ':completion:*' rehash true                              # automatically find new executables in path
-HISTFILE=~/.zhistory
+HISTFILE=$HOME/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don\'t consider certain characters part of the word
@@ -22,14 +22,12 @@ alias cp="cp -i"                                                # Confirm before
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
 alias ls="ls --color=auto"
-alias SCHPR="cd ~/SCHPR/INF/"
-alias toolhub="cd ~/ToolHub/"
-alias stratego="cd ~/Code/INF/stratego/"
+alias SCHPR="cd $HOME/SCHPR/INF/"
 ## Search file contents, respects .gitignore
 alias grop="ag --nobreak --nonumbers --noheading . | fzf"
-alias laravel="sudo systemctl start mariadb; composer install; npm install; npm run dev; php artisan migrate:fresh --seed; notify-send laravel done; php artisan serve"
 alias cpu="watch -n.5 'cat /proc/cpuinfo | grep \"^[c]pu MHz\"'"
 alias q="exit"
+alias m="ncmpcpp"
 
 ## Plugins section: Enable fish style features
 # Use syntax highlighting
@@ -54,10 +52,10 @@ export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Theme
-[ -f ~/.config/zsh/themes/minimal/minimal.zsh ] && source ~/.config/zsh/themes/minimal/minimal.zsh
+[ -f $HOME/.config/zsh/themes/minimal/minimal.zsh ] && source $HOME/.config/zsh/themes/minimal/minimal.zsh
 # Plugins
 ## fzf cd plugin, use tab
-[ -f ~/.config/zsh/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh ] && source ~/.config/zsh/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
+[ -f $HOME/.config/zsh/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh ] && source $HOME/.config/zsh/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
 
 
 # F12 - Clear the Screen
@@ -68,16 +66,25 @@ export QT_STYLE_OVERRIDE=gtk2
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=/usr/bin/firefox-beta-bin
-export ANDROID_HOME=/home/$USER/Android/Sdk/
+export ANDROID_HOME=$HOME/Android/Sdk/
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 # Add ruby gem bins
-export PATH=~/.gem/ruby/2.5.0/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 # Add composer(php) bin folder to the path
-export PATH=~/.config/composer/vendor/bin:$PATH
+export PATH=$HOME/.config/composer/vendor/bin:$PATH
 # Add my bin folder to the path
-export PATH=~/bin:$PATH
+export PATH=$HOME/bin:$PATH
+# Add dotnet core tools to the path
+export PATH="$PATH:$HOME/.dotnet/tools"
 export WINEARCH=win32
-export WINEPREFIX=~/.wine
+export WINEPREFIX=$HOME/.wine
+export JAVA_HOME=/usr/lib/jvm/default
+export ANDROID_HOME=$HOME/.android/sdk
+# Disable the stupid dotnet telemetry
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+# Add npm bins to the path
+export PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=$HOME/.node_modules
 
 if [ $(tty) = "/dev/tty1" ]; then
     exec startx
