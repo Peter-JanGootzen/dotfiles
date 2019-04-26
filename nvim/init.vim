@@ -34,7 +34,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 "-------------------=== Code/Project navigation ===-------------
 Plug 'scrooloose/nerdtree'                " Project and file navigation
-Plug 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
+"Plug 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
+" https://github.com/Xuyuanp/nerdtree-git-plugin/issues/102
 Plug 'ryanoasis/vim-devicons'             " Vimicons
 Plug 'vim-airline/vim-airline'            " Lean & mean status/tabline for vim
 Plug 'vim-airline/vim-airline-themes'     " Themes for airline
@@ -56,6 +57,9 @@ Plug 'w0rp/ale'                                               " Async linting en
 Plug 'Shougo/neosnippet.vim'                                  " Snippets plugin
 Plug 'Shougo/neosnippet-snippets'                             " Snippets db
 Plug 'sheerun/vim-polyglot'                                   " Languages syntax
+Plug 'rust-lang/rust.vim'                                     " Rust support
+Plug 'racer-rust/vim-racer'                                   " Rust auto complete support
+
 " I dont debug in nvim atm
 "Plug 'joonty/vdebug'                                          " XDebug
 Plug 'tpope/vim-sleuth'
@@ -175,4 +179,10 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 iabbrev </ </<C-X><C-O>
 let g:closetag_filenames = '*.html,*.vue'
 
+" Rust
+let g:racer_experimental_completer = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
