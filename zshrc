@@ -21,7 +21,8 @@ WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don\'t conside
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
-alias ls="ls --color=auto"
+# A great ls replacement built in Rust
+alias ls="exa"
 alias SCHPR="cd $HOME/SCHPR/INF/"
 ## Search file contents, respects .gitignore
 alias grop="ag --nobreak --nonumbers --noheading . | fzf"
@@ -90,6 +91,10 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # Add npm bins to the path
 export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=$HOME/.node_modules
+# Add user installed Python packages
+export PATH="$HOME/.local/lib/python3.7/site-packages:$PATH"
+# Add cargo binaries
+export PATH="$HOME/.cargo/bin:$PATH"
 # Machine specific variables
 if [[ $(uname -n) == 'SpaceMonkey' ]]; then
     export MUSIC=/mnt/storage/Media/Music

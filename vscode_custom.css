@@ -1,0 +1,49 @@
+.monaco-shell.linux {
+    font-family: 'Terminus (TTF)';
+    font-size: 16px; !important
+}
+.content {
+    font-family: 'Terminus (TTF)';
+    font-size: 12px; !important
+}
+.monaco-editor .peekview-widget .head .peekview-title {
+    font-family: 'Terminus (TTF)';
+    font-size: 12px; !important
+}
+.monaco-panel-view .panel>.panel-header h3.title {
+    font-family: 'Terminus (TTF)';
+    font-size: 12px; !important
+}
+.monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab .tab-label a, .monaco-workbench .part.editor>.content .editor-group-container>.title .title-label a {
+    font-size: 12px; !important
+    font-family: 'Terminus (TTF)';
+}
+.monaco-workbench {
+    font-family: 'Terminus (TTF)';
+    font-size: 12px; !important
+}
+.monaco-workbench .part>.content {
+    font-family: 'Terminus (TTF)';
+    font-size: 12px; !important
+}
+input, textarea, button, select {
+    font-family: 'Terminus (TTF)';
+    font-size: 12px; !important
+}
+.monaco-workbench .part>.title>.title-label h2 {
+    font-family: 'Terminus (TTF)';
+    font-size: 12px; !important
+}
+.extension-editor>.header>.details>.subtext-container {
+    font-family: 'Terminus (TTF)';
+    font-size: 12px; !important
+}
+.monaco-action-bar .action-label {
+    font-family: 'Terminus (TTF)';
+    font-size: 12px; !important
+}
+.monaco-workbench>.notifications-center>.notifications-center-header>.notifications-center-header-title {
+    font-family: 'Terminus (TTF)';
+    font-size: 12px; !important
+}
+

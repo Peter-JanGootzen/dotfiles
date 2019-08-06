@@ -233,7 +233,7 @@ mode "resize" {
 # Autostart applications
 exec --no-startup-id compton
 exec --no-startup-id polybar main
-exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/in-space-\#232629.png
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id udiskie
 exec --no-startup-id nm-applet

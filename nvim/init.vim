@@ -34,24 +34,28 @@ call plug#begin('~/.config/nvim/plugged')
 
 "-------------------=== Code/Project navigation ===-------------
 Plug 'scrooloose/nerdtree'                " Project and file navigation
-"Plug 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
-" https://github.com/Xuyuanp/nerdtree-git-plugin/issues/102
 Plug 'ryanoasis/vim-devicons'             " Vimicons
 Plug 'vim-airline/vim-airline'            " Lean & mean status/tabline for vim
 Plug 'vim-airline/vim-airline-themes'     " Themes for airline
-Plug 'yuttie/comfortable-motion.vim'      " Smooth scrolling
-Plug 'MattesGroeger/vim-bookmarks'        " Bookmarks
-Plug 'thaerkh/vim-indentguides'           " Visual representation of indents
 Plug 'airblade/vim-gitgutter'             " Git symbols next to lines
 Plug 'tpope/vim-fugitive'                 " Gstatus and stuff
+"
+" Opens vim in the parent git directory when opening a file, this is handy
+" when fuzzy searching
+Plug 'airblade/vim-rooter'
+" The fuzzy searcher
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'                   " Fuzzy searcher
 
 "-------------------=== Other ===-------------------------------
-Plug 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
-Plug 'vimwiki/vimwiki'                    " Personal Wiki
-Plug 'kien/rainbow_parentheses.vim'       " Rainbow Parentheses
-Plug 'dylanaraps/wal.vim'                 " wal color scheme
+Plug 'luochen1990/rainbow'
+Plug 'thaerkh/vim-indentguides'           " Visual representation of indents
+" Figures the indenting style of the current file out
+Plug 'tpope/vim-sleuth'
+" Automaticly inserts closing tags
+Plug 'alvan/vim-closetag'
 
-"-------------------=== Languages support ===-------------------
+"-------------------=== Languages support, linting and completions ===-------------------
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Async completions
 Plug 'w0rp/ale'                                               " Async linting engine
 Plug 'Shougo/neosnippet.vim'                                  " Snippets plugin
@@ -60,13 +64,6 @@ Plug 'sheerun/vim-polyglot'                                   " Languages syntax
 Plug 'rust-lang/rust.vim'                                     " Rust support
 Plug 'racer-rust/vim-racer'                                   " Rust auto complete support
 
-" I dont debug in nvim atm
-"Plug 'joonty/vdebug'                                          " XDebug
-Plug 'tpope/vim-sleuth'
-Plug 'alvan/vim-closetag'
-
-Plug '/usr/bin/fzf'
-Plug 'junegunn/fzf.vim'                   " Fuzzy searcher
 call plug#end()
 
 filetype plugin indent on
@@ -96,6 +93,8 @@ set backspace=indent,eol,start              " backspace removes all (indents, EO
 
 set directory=$HOME/.nvim/swap//
 set backupdir=$HOME/.nvim/backup//
+set undodir=$HOME/.nvim/undo//
+set undofile
 
 set scrolloff=5                            " let 10 lines before/after cursor during scroll
 
@@ -110,16 +109,6 @@ set incsearch                                 " incremental search
 set hlsearch                                  " highlight search results
 set ignorecase                                " only enable case sensitive search if uppercase character was entered
 
-" Comfortable Motion Settings
-let g:comfortable_motion_scroll_down_key = "k"
-let g:comfortable_motion_scroll_up_key = "l"
-let g:comfortable_motion_no_default_key_mappings = 1
-let g:comfortable_motion_impulse_multiplier = 25  " Feel free to increase/decrease this value.
-nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 2)<CR>
-nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
-nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
-nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
-
 " AirLine settings
 let g:airline#extensions#tabline#enabled=1
 " let g:airline#extensions#tabline#formatter='unique_tail'
@@ -129,15 +118,6 @@ let g:airline_powerline_fonts=1
 set modifiable
 let NERDTreeWinSize=50
 let NERDTreeMinimalUI=1
-
-" Rainbow Parentheses Autoload
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-" Indent Guides Settings
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
 " Keybindings
 let mapleader=' '
@@ -164,14 +144,10 @@ set updatetime=100
 " Auto start deoplete
 let g:deoplete#enable_at_startup = 1
 
+let g:rainbow_active = 1
+
 " Restricting mutt mail files to 72 characters text width
 au BufRead ~/.config/mutt/tmp set tw=72
-
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 1
@@ -186,3 +162,40 @@ au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
+" Linter
+" only lint on save
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_enter = 1
+let g:ale_rust_rls_config = {
+	\ 'rust': {
+		\ 'all_targets': 1,
+		\ 'build_on_save': 1,
+		\ 'clippy_preference': 'on'
+	\ }
+	\ }
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_rust_rls_toolchain = '' "Chooses the default toolchain
+let g:ale_linters = {'rust': ['rls']}
+let g:ale_sign_error = "✖"
+let g:ale_sign_warning = "⚠"
+let g:ale_sign_info = "i"
+let g:ale_sign_hint = "➤"
+" Show the errors in airline
+let g:airline#extensions#ale#enabled = 1
+" Show the type of the variable under the cursor
+nnoremap <silent> K :ALEHover<CR>
+
+
+" No arrow keys --- force yourself to use the home row
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Left and right can switch buffers
+nnoremap <left> :bp<CR>
+nnoremap <right> :bn<CR>

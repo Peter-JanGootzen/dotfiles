@@ -21,8 +21,6 @@ dbus-update-activation-environment --systemd DISPLAY
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-# Set the keyboard to go fast and remap caps to escape
-setxkbmap -option caps:swapescape
-setxkbmap -layout us -variant intl
+keyboard
 
 exec i3

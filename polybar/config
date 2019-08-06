@@ -43,7 +43,9 @@ module-margin-left = 1
 module-margin-right = 1
 
 font-0 = xos4 Terminus:pixelsize=10;1
-font-1 = Wuncon Siji:pixelsize=10;1
+; The Siji font now resides in the ~/.fonts folder in bdf format
+; because of an issue that I was not able to resolve
+font-1 = Siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = mpd

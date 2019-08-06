@@ -35,7 +35,7 @@ rofi.color-active:      #232629, #ffffff, #232629, #808280, #ffffff
 rofi.color-urgent:      #232629, #ffffff, #232629, #ffffff, #000000
 rofi.separator-style:   solid
 rofi.fullscreen:        false
-rofi.padding:           20
+rofi.padding:           10
 rofi.hide-scrollbar:    true
 rofi.line-margin:       4
 rofi.yoffset:           0
