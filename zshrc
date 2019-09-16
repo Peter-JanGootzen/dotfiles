@@ -21,8 +21,8 @@ WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don\'t conside
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
+alias zathura="zathura --fork"
 # A great ls replacement built in Rust
-alias ls="exa"
 alias SCHPR="cd $HOME/SCHPR/INF/"
 ## Search file contents, respects .gitignore
 alias grop="ag --nobreak --nonumbers --noheading . | fzf"
@@ -71,7 +71,7 @@ export QT_STYLE_OVERRIDE=gtk2
 export GTK2_RC_FILES=$HOME/.gtkrc-2.0
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=/usr/bin/firefox-beta-bin
+export BROWSER=/usr/bin/firefox
 export ANDROID_HOME=$HOME/Android/Sdk/
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 # Add ruby gem bins
@@ -102,6 +102,9 @@ fi
 
 if [ $(tty) = "/dev/tty1" ]; then
     exec startx
+elif [[ $(tty) == "/dev/tty2" ]]; then
+    exec nvidia-xrun
 elif [[ $(tty) == "/dev/tty"* ]]; then
     cowsay "What are you doing here?"
 fi
+

@@ -1,0 +1,18 @@
+@-moz-document url(about:newtab) {
+    body  {
+        background-color: #232629 !important;
+    }
+    #newtab-search-text, #searchSuggestionTable, #searchSuggestionTable > tr, #searchSuggestionTable > tr > td, #searchSuggestionTable > table > tr > td, #searchSuggestionTable > button {
+        background-color: #232629 !important;
+        color: #F8F8F2 !important;
+        fill: #F8F8F2 !important;
+    }
+    .search-wrapper input {
+        box-shadow: rgba(248, 248, 242, 0.2) 0px 1px 4px 0px, rgba(238, 238, 232, 0.15) 0px 0px 0px 1px !important;
+    }
+}
+
+.dark {
+    color: #eeeeee !important;
+    background-color: #232629 !important;
+}

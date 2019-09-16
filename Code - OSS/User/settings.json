@@ -1,0 +1,151 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "update.mode": "none",
+    "workbench.statusBar.feedback.visible": false,
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.useSystemClipboard": true,
+    "keyboard.dispatch": "keyCode",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["leader", "leader"],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        }
+    ],
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim",
+    "window.zoomLevel": 0,
+    "editor.fontLigatures": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.fontFamily": "Terminus \\(TTF\\)",
+    "editor.fontSize": 16,
+    "editor.minimap.enabled": true,
+    "window.menuBarVisibility": "toggle",
+    "cosmosDB.showSavePrompt": false,
+    "terminal.integrated.fontSize": 16,
+    "vim.statusBarColorControl": false,
+    "workbench.colorCustomizations": {
+        "editor.background": "#232629",
+        "menu.background": "#232629",
+        "panel.background": "#232629",
+        "terminal.background": "#232629",
+        "sideBar.background": "#232629",
+        "input.background": "#232629",
+        "badge.background": "#232629",
+        "statusBar.background": "#232629",
+        "breadcrumb.background": "#232629",
+        "activityBar.background": "#232629",
+        "dropdown.background": "#232629",
+        "list.dropBackground": "#232629",
+        "button.background": "#232629",
+        "editorPane.background": "#232629",
+        "welcomePage.background": "#232629",
+        "selection.background": "#232629",
+        "debugToolBar.background": "#232629",
+        "menu.separatorBackground": "#232629",
+        "editorBracketMatch.background": "#232629",
+        "editorMarkerNavigation.background": "#232629",
+        "panel.dropBackground": "#232629",
+        "notifications.background": "#232629",
+        "editorGroupHeader.tabsBackground": "#232629",
+        "titleBar.activeBackground": "#232629",
+        "tab.inactiveBackground": "#232629",
+        "editor.lineHighlightBackground": "#232629"
+    },
+    //"workbench.colorCustomizations": {
+    //    "statusBar.background": "#005f5f",
+    //    "statusBar.noFolderBackground": "#005f5f",
+    //    "statusBar.debuggingBackground": "#005f5f",
+    //    "activityBarBadge.background": "#FF7042",
+    //    "list.activeSelectionForeground": "#FF7042",
+    //    "list.inactiveSelectionForeground": "#FF7042",
+    //    "list.highlightForeground": "#FF7042",
+    //    "scrollbarSlider.activeBackground": "#FF704250",
+    //    "editorSuggestWidget.highlightForeground": "#FF7042",
+    //    "textLink.foreground": "#FF7042",
+    //    "progressBar.background": "#FF7042",
+    //    "pickerGroup.foreground": "#FF7042",
+    //    "tab.activeBorder": "#FF7042",
+    //    "notificationLink.foreground": "#FF7042",
+    //    "editorWidget.resizeBorder": "#FF7042",
+    //    "editorWidget.border": "#FF7042",
+    //    "settings.modifiedItemIndicator": "#FF7042",
+    //    "settings.headerForeground": "#FF7042",
+    //    "panelTitle.activeBorder": "#FF7042",
+    //    "breadcrumb.activeSelectionForeground": "#FF7042",
+    //    "menu.selectionForeground": "#FF7042",
+    //    "menubar.selectionForeground": "#FF7042"
+    //},
+    "breadcrumbs.enabled": true,
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "explorer.confirmDragAndDrop": false,
+    "razor.disabled": true,
+    "razor.trace": "Verbose",
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "editor.cursorBlinking": "solid",
+    "vscode_custom_css.imports": ["file:///home/peter-jan/.vscode/custom.css"],
+    "vscode_custom_css.policy": true,
+    "workbench.colorTheme": "Dracula Soft",
+    "liveshare.featureSet": "insiders",
+    "peacock.favoriteColors": [
+        {
+            "name": "Angular Red",
+            "value": "#b52e31"
+        },
+        {
+            "name": "Auth0 Orange",
+            "value": "#eb5424"
+        },
+        {
+            "name": "Azure Blue",
+            "value": "#007fff"
+        },
+        {
+            "name": "C# Purple",
+            "value": "#68217A"
+        },
+        {
+            "name": "Gatsby Purple",
+            "value": "#639"
+        },
+        {
+            "name": "Go Cyan",
+            "value": "#5dc9e2"
+        },
+        {
+            "name": "Java Blue-Gray",
+            "value": "#557c9b"
+        },
+        {
+            "name": "JavaScript Yellow",
+            "value": "#f9e64f"
+        },
+        {
+            "name": "Mandalorian Blue",
+            "value": "#1857a4"
+        },
+        {
+            "name": "Node Green",
+            "value": "#215732"
+        },
+        {
+            "name": "React Blue",
+            "value": "#00b3e6"
+        },
+        {
+            "name": "Something Different",
+            "value": "#832561"
+        },
+        {
+            "name": "Vue Green",
+            "value": "#42b883"
+        }
+    ],
+    "explorer.confirmDelete": false,
+}
