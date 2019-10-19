@@ -145,17 +145,21 @@ scroll-step 1)
              '(font . "xos4 Terminus 10"))
 
 ;;; Keybindings
-(evil-leader/set-key "f f" 'helm-projectile)
-(evil-leader/set-key "f p" 'helm-projectile-switch-project)
+(evil-leader/set-key "f f" 'helm-find-files)
+(evil-leader/set-key "f p" 'helm-projectile)
+(evil-leader/set-key "p" 'helm-projectile-switch-project)
+(evil-leader/set-key "<SPC>" 'save-buffer)
 
-; Set backup folder
-;(setq backup-directory-alist
-;      `((".*" "~/.bak/" t)))
-;(setq auto-save-file-name-transforms
-;      `((".*" "~/.bak/" t)))
+; Set backup and auto save folder
+(setq backup-directory-alist '(("." . "~/.bak/")))
+(setq auto-save-file-name-transforms `((".*" "~/.bak/" t)))
 
 ; Disable the Emacs startup screen
 (setq inhibit-startup-screen t)
+
+; Theming
+(load-theme 'zerodark t)
+(zerodark-setup-modeline-format)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -164,7 +168,7 @@ scroll-step 1)
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-plus-contrib flycheck-rtags helm-rtags projectile cmake-mode helm fzf flycheck-irony company-rtags irony auto-complete-clang rtags cmake-ide evil-magit magit powerline ## rainbow-delimiters flycheck smooth-scrolling evil-leader company evil-numbers evil))))
+    (zerodark-theme org-plus-contrib flycheck-rtags helm-rtags projectile cmake-mode helm fzf flycheck-irony company-rtags irony auto-complete-clang rtags cmake-ide evil-magit magit powerline ## rainbow-delimiters flycheck smooth-scrolling evil-leader company evil-numbers evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
