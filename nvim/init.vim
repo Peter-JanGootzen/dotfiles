@@ -56,13 +56,9 @@ Plug 'tpope/vim-sleuth'
 Plug 'alvan/vim-closetag'
 
 "-------------------=== Languages support, linting and completions ===-------------------
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Async completions
 Plug 'w0rp/ale'                                               " Async linting engine
-Plug 'Shougo/neosnippet.vim'                                  " Snippets plugin
-Plug 'Shougo/neosnippet-snippets'                             " Snippets db
 Plug 'sheerun/vim-polyglot'                                   " Languages syntax
 Plug 'rust-lang/rust.vim'                                     " Rust support
-Plug 'racer-rust/vim-racer'                                   " Rust auto complete support
 
 call plug#end()
 
@@ -79,6 +75,9 @@ syntax enable                               " enable syntax highlighting
 set number                                  " show line numbers
 set ruler
 set ttyfast                                 " terminal acceleration
+"highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+"set cursorline
+"autocmd InsertEnter,InsertLeave * set cul!
 
 set tabstop=8
 set softtabstop=4
@@ -96,13 +95,13 @@ set backupdir=$HOME/.nvim/backup//
 set undodir=$HOME/.nvim/undo//
 set undofile
 
-set scrolloff=5                            " let 10 lines before/after cursor during scroll
+set scrolloff=5                             " let 5 lines before/after cursor during scroll
 
 set clipboard=unnamedplus                   " enable systemwide clipboard
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
 " Relative Numbering
-nnoremap <leader>rn :set relativenumber!<CR>
+nnoremap <leader>sr :set relativenumber!<CR>
 
 " Search settings
 set incsearch                                 " incremental search
@@ -129,38 +128,29 @@ nnoremap <silent> <leader>qf :q!<CR>
 nnoremap <silent> <leader>ff :Files<CR>
 nnoremap <silent> <leader>fg :GFiles<CR>
 nnoremap <silent> <leader>fd :call Fzf_dev()<CR>
+nnoremap <silent> <leader>fc :Ag<CR>
 nnoremap <silent> <leader>bb :Buffers<CR>
-nnoremap <silent> <leader>ag :Ag<CR>
 nnoremap <silent> <leader>src :so $MYVIMRC<CR>
-nnoremap <silent> <leader>erc :tabe $MYVIMRC<CR>
+nnoremap <silent> <leader>erc :edit $MYVIMRC<CR>
 nnoremap <silent> <leader>oo :NERDTreeToggle<CR>
 nnoremap <silent> <leader>sh :GitGutterStageHunk<CR>
 nnoremap <silent> <leader>nh :GitGutterNextHunk<CR>
 nnoremap <silent> <leader>ph :GitGutterPrevHunk<CR>
+nnoremap <silent> <leader>t :ALEHover<CR>
+nnoremap <silent> <leader>r :ALEFindReferences<CR>
+nnoremap <silent> <leader>d :ALEGoToDefinition<CR>
+nnoremap <silent> <leader>cf :!cargo fmt<CR>
+
+
+let g:closetag_filenames = '*.html,*.vue'
 
 " Set gitgutter to update every 100ms
 set updatetime=100
-
-" Auto start deoplete
-let g:deoplete#enable_at_startup = 1
 
 let g:rainbow_active = 1
 
 " Restricting mutt mail files to 72 characters text width
 au BufRead ~/.config/mutt/tmp set tw=72
-
-let g:ale_sign_column_always = 1
-let g:ale_completion_enabled = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-iabbrev </ </<C-X><C-O>
-let g:closetag_filenames = '*.html,*.vue'
-
-" Rust
-let g:racer_experimental_completer = 1
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " Linter
 " only lint on save
@@ -182,11 +172,13 @@ let g:ale_sign_error = "✖"
 let g:ale_sign_warning = "⚠"
 let g:ale_sign_info = "i"
 let g:ale_sign_hint = "➤"
+let g:ale_sign_column_always = 1
+let g:ale_completion_enabled = 1
+let g:ale_c_clang_options="-Iextern/"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+iabbrev </ </<C-X><C-O>
 " Show the errors in airline
 let g:airline#extensions#ale#enabled = 1
-" Show the type of the variable under the cursor
-nnoremap <silent> K :ALEHover<CR>
-
 
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
