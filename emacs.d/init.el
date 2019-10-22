@@ -83,11 +83,6 @@ scroll-step 1)
   '(add-to-list
     'company-backends '(company-irony-c-headers company-irony)))
 
-; CMake
-(require 'cmake-ide)
-(require 'cmake-mode)
-(cmake-ide-setup)
-
 ; Tags
 (require 'rtags)
 (require 'company-rtags)
@@ -102,6 +97,11 @@ scroll-step 1)
 (require 'helm-rtags)
 (setq rtags-use-helm t)
 
+; CMake
+(require 'cmake-ide)
+(require 'cmake-mode)
+(cmake-ide-setup)
+
 ; Powerline
 (require 'powerline)
 (powerline-default-theme)
@@ -109,6 +109,7 @@ scroll-step 1)
 ; Git integration
 (require 'magit)
 (require 'evil-magit)
+(global-diff-hl-mode)
 
 ; Searching things
 (require 'helm-config)
@@ -149,6 +150,7 @@ scroll-step 1)
 (evil-leader/set-key "f p" 'helm-projectile)
 (evil-leader/set-key "p" 'helm-projectile-switch-project)
 (evil-leader/set-key "<SPC>" 'save-buffer)
+(global-set-key (kbd "C-<tab>") 'company-complete)
 
 ; Set backup and auto save folder
 (setq backup-directory-alist '(("." . "~/.bak/")))
@@ -160,6 +162,7 @@ scroll-step 1)
 ; Theming
 (load-theme 'zerodark t)
 (zerodark-setup-modeline-format)
+(set-background-color "#232629")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -168,7 +171,7 @@ scroll-step 1)
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (zerodark-theme org-plus-contrib flycheck-rtags helm-rtags projectile cmake-mode helm fzf flycheck-irony company-rtags irony auto-complete-clang rtags cmake-ide evil-magit magit powerline ## rainbow-delimiters flycheck smooth-scrolling evil-leader company evil-numbers evil))))
+    (flycheck-rust rust-mode lsp-mode rust-playground ht diff-hl zerodark-theme org-plus-contrib flycheck-rtags helm-rtags projectile cmake-mode helm fzf flycheck-irony company-rtags irony auto-complete-clang rtags cmake-ide evil-magit magit powerline ## rainbow-delimiters flycheck smooth-scrolling evil-leader company evil-numbers evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

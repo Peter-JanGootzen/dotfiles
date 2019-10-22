@@ -1,84 +1,62 @@
-"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-"                                                                                                "
-"                                          .::::.                                                "
-"                             ___________ :;;;;:`____________                                    "
-"                             \_________/ ?????L \__________/                                    "
-"                               |.....| ????????> :.......'                                      "
-"                               |:::::| $$$$$$"`.:::::::' ,                                      "
-"                              ,|:::::| $$$$"`.:::::::' .OOS.                                    "
-"                            ,7D|;;;;;| $$"`.;;;;;;;' .OOO888S.                                  "
-"                          .GDDD|;;;;;| ?`.;;;;;;;' .OO8DDDDDNNS.                                "
-"                           'DDO|IIIII| .7IIIII7' .DDDDDDDDNNNF`                                 "
-"                             'D|IIIIII7IIIII7' .DDDDDDDDNNNF`                                   "
-"                               |EEEEEEEEEE7' .DDDDDDDNNNNF`                                     "
-"                               |EEEEEEEEZ' .DDDDDDDDNNNF`                                       "
-"                               |888888Z' .DDDDDDDDNNNF`                                         "
-"                               |8888Z' ,DDDDDDDNNNNF`                                           "
-"                               |88Z'    /"DNNNNNNN"                                              "
-"                               '"'        /"MMMM"                                                "
-"                                            /""                                                  "
-"                                                                                                "
-"      ___    ____                                            __   _         _    ________  ___  "
-"     /   |  / / /  __  ______  __  __   ____  ___  ___  ____/ /  (_)____   | |  / /  _/  |/  /  "
-"    / /| | / / /  / / / / __ \/ / / /  / __ \/ _ \/ _ \/ __  /  / / ___/   | | / // // /|_/ /   "
-"   / ___ |/ / /  / /_/ / /_/ / /_/ /  / / / /  __/  __/ /_/ /  / (__  )    | |/ // // /  / /    "
-"  /_/  |_/_/_/   \__, /\____/\__,_/  /_/ /_/\___/\___/\__,_/  /_/____/     |___/___/_/  /_/     "
-"                   /_/                                                                          "
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+"                .::::.
+"   ___________ :;;;;:`____________
+"   \_________/ ?????L \__________/
+"     |.....| ????????> :.......'
+"     |:::::| $$$$$$"`.:::::::' ,
+"    ,|:::::| $$$$"`.:::::::' .OOS.
+"  ,7D|;;;;;| $$"`.;;;;;;;' .OOO888S.
+".GDDD|;;;;;| ?`.;;;;;;;' .OO8DDDDDNNS.
+" 'DDO|IIIII| .7IIIII7' .DDDDDDDDNNNF`
+"   'D|IIIIII7IIIII7' .DDDDDDDDNNNF`
+"     |EEEEEEEEEE7' .DDDDDDDNNNNF`
+"     |EEEEEEEEZ' .DDDDDDDDNNNF`
+"     |888888Z' .DDDDDDDDNNNF`
+"     |8888Z' ,DDDDDDDNNNNF`
+"     |88Z'    /"DNNNNNNN"
+"     '"'        /"MMMM"
+"                  /""
 
-filetype off                  " required
+filetype off
 set hidden
 
 " Plugins
 call plug#begin('~/.config/nvim/plugged')
 
 "-------------------=== Code/Project navigation ===-------------
-Plug 'scrooloose/nerdtree'                " Project and file navigation
-Plug 'ryanoasis/vim-devicons'             " Vimicons
-Plug 'vim-airline/vim-airline'            " Lean & mean status/tabline for vim
-Plug 'vim-airline/vim-airline-themes'     " Themes for airline
-Plug 'airblade/vim-gitgutter'             " Git symbols next to lines
-Plug 'tpope/vim-fugitive'                 " Gstatus and stuff
-"
-" Opens vim in the parent git directory when opening a file, this is handy
-" when fuzzy searching
-Plug 'airblade/vim-rooter'
-" The fuzzy searcher
-Plug '/usr/bin/fzf'
-Plug 'junegunn/fzf.vim'                   " Fuzzy searcher
-
-"-------------------=== Other ===-------------------------------
-Plug 'luochen1990/rainbow'
-Plug 'thaerkh/vim-indentguides'           " Visual representation of indents
-" Figures the indenting style of the current file out
-Plug 'tpope/vim-sleuth'
-" Automaticly inserts closing tags
-Plug 'alvan/vim-closetag'
+Plug 'scrooloose/nerdtree'                          " Project and file navigation
+Plug 'ryanoasis/vim-devicons'                       " Vimicons
+Plug 'vim-airline/vim-airline'                      " Lean & mean status/tabline for vim
+Plug 'vim-airline/vim-airline-themes'               " Themes for airline
+Plug 'airblade/vim-gitgutter'                       " Git symbols next to lines
+Plug 'tpope/vim-fugitive'                           " Gstatus and stuff
+Plug 'airblade/vim-rooter'                          " Opens vim in the parent git directory when opening a file
+Plug '/usr/bin/fzf'                                 " The fuzzy searcher,
+Plug 'junegunn/fzf.vim'                             " with vim support
+Plug 'mhinz/vim-startify'                           " Fancy start screen
 
 "-------------------=== Languages support, linting and completions ===-------------------
-Plug 'w0rp/ale'                                               " Async linting engine
-Plug 'sheerun/vim-polyglot'                                   " Languages syntax
-Plug 'rust-lang/rust.vim'                                     " Rust support
+Plug 'sheerun/vim-polyglot'                         " Languages syntax highlighting
+Plug 'neoclide/coc.nvim', {'branch': 'release'}     " Language Server Protocol client and completion engine
+Plug 'rust-lang/rust.vim'                           " Rust support
+
+"-------------------=== Other ===-------------------------------
+Plug 'luochen1990/rainbow'                          " Rainbow Parentheses
+Plug 'thaerkh/vim-indentguides'                     " Visual representation of indents
+Plug 'tpope/vim-sleuth'                             " Figures the indenting style of the current file out
+Plug 'alvan/vim-closetag'                           " Automaticly inserts closing tags when HTMLing
+Plug 'joshdick/onedark.vim'                         " Color theme
 
 call plug#end()
-
 filetype plugin indent on
 
 
-" General settings
-set encoding=utf-8
-set t_Co=256                                " 256 colors
-let g:airline_theme='badwolf'
-color ron
-syntax enable                               " enable syntax highlighting
-
+"" General settings
 set number                                  " show line numbers
 set ruler
 set ttyfast                                 " terminal acceleration
-"highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-"set cursorline
-"autocmd InsertEnter,InsertLeave * set cul!
+set updatetime=100                          " For fast programming
 
+set encoding=utf-8
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
@@ -86,7 +64,7 @@ set expandtab
 set autoindent                              " indent when moving to the next line while writing code
 set smarttab                                " set tabs for a shifttabs logic
 
-set showmatch                               " shows matching part of bracket pairs (), [], {}
+set showmatch                               " highlights matching part of bracket pairs (), [], {}
 
 set backspace=indent,eol,start              " backspace removes all (indents, EOLs, start) What is start?
 
@@ -100,13 +78,27 @@ set scrolloff=5                             " let 5 lines before/after cursor du
 set clipboard=unnamedplus                   " enable systemwide clipboard
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
-" Relative Numbering
+set relativenumber
 nnoremap <leader>sr :set relativenumber!<CR>
 
 " Search settings
 set incsearch                                 " incremental search
 set hlsearch                                  " highlight search results
 set ignorecase                                " only enable case sensitive search if uppercase character was entered
+
+" Theming
+set termguicolors                           " enable full 24-bit color support
+" onedark.vim settings override, custom bg
+if (has("autocmd") && !has("gui_running"))
+  augroup colors
+    autocmd!
+    let s:background = { "gui": "#232629", "cterm": "235", "cterm16": "0" }
+    autocmd ColorScheme * call onedark#set_highlight("Normal", { "bg": s:background }) "No `fg` setting
+  augroup END
+endif
+let g:airline_theme='onedark'
+color onedark
+syntax enable
 
 " AirLine settings
 let g:airline#extensions#tabline#enabled=1
@@ -118,7 +110,140 @@ set modifiable
 let NERDTreeWinSize=50
 let NERDTreeMinimalUI=1
 
-" Keybindings
+" Closetags
+let g:closetag_filenames = '*.html,*.vue'
+
+" Rain parentheses
+let g:rainbow_active = 1
+
+" Restricting mutt mail files to 72 characters text width
+au BufRead ~/.config/mutt/tmp set tw=72
+
+"--------------=== coc.nvim settings ===----------------
+" Better display for messages
+set cmdheight=2
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+function! SwitchHeaderAndSource()
+    let l:alter = CocRequest('clangd', 'textDocument/switchSourceHeader', {'uri': 'file://'.expand("%:p")})
+    " remove file:/// from response
+    let l:alter = substitute(l:alter, "file://", "", "")
+    execute 'edit ' . l:alter
+endfunction
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+"" Keybindings
 let mapleader=' '
 nnoremap <silent> <leader><leader> :w<CR>
 nnoremap <silent> <leader>qw :wq<CR>
@@ -136,49 +261,10 @@ nnoremap <silent> <leader>oo :NERDTreeToggle<CR>
 nnoremap <silent> <leader>sh :GitGutterStageHunk<CR>
 nnoremap <silent> <leader>nh :GitGutterNextHunk<CR>
 nnoremap <silent> <leader>ph :GitGutterPrevHunk<CR>
-nnoremap <silent> <leader>t :ALEHover<CR>
-nnoremap <silent> <leader>r :ALEFindReferences<CR>
-nnoremap <silent> <leader>d :ALEGoToDefinition<CR>
 nnoremap <silent> <leader>cf :!cargo fmt<CR>
+nnoremap <silent> <leader>cc :call SwitchHeaderAndSource()<CR>
+nmap <silent> <leader>rn <Plug>(coc-rename)
 
-
-let g:closetag_filenames = '*.html,*.vue'
-
-" Set gitgutter to update every 100ms
-set updatetime=100
-
-let g:rainbow_active = 1
-
-" Restricting mutt mail files to 72 characters text width
-au BufRead ~/.config/mutt/tmp set tw=72
-
-" Linter
-" only lint on save
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_enter = 1
-let g:ale_rust_rls_config = {
-	\ 'rust': {
-		\ 'all_targets': 1,
-		\ 'build_on_save': 1,
-		\ 'clippy_preference': 'on'
-	\ }
-	\ }
-let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
-let g:ale_rust_rls_toolchain = '' "Chooses the default toolchain
-let g:ale_linters = {'rust': ['rls']}
-let g:ale_sign_error = "✖"
-let g:ale_sign_warning = "⚠"
-let g:ale_sign_info = "i"
-let g:ale_sign_hint = "➤"
-let g:ale_sign_column_always = 1
-let g:ale_completion_enabled = 1
-let g:ale_c_clang_options="-Iextern/"
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-iabbrev </ </<C-X><C-O>
-" Show the errors in airline
-let g:airline#extensions#ale#enabled = 1
 
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
