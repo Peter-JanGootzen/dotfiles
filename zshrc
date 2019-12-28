@@ -29,6 +29,8 @@ alias grop="ag --nobreak --nonumbers --noheading . | fzf"
 alias cpu="watch -n.5 'cat /proc/cpuinfo | grep \"^[c]pu MHz\"'"
 alias q="exit"
 alias m="ncmpcpp"
+alias vi="nvim"
+alias vim="nvim"
 # Machine specific aliases
 if [[ $(uname -n) == 'SpaceMonkey' ]]; then
     alias alsamixer="alsamixer -c 0"
@@ -74,6 +76,9 @@ export VISUAL=nvim
 export BROWSER=/usr/bin/firefox
 export ANDROID_HOME=$HOME/Android/Sdk/
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+# CMake settings
+export CMAKE_GENERATOR=Ninja
+export CXX=clang++
 # Add ruby gem bins
 export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 # Add composer(php) bin folder to the path
@@ -93,8 +98,10 @@ export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=$HOME/.node_modules
 # Add user installed Python packages
 export PATH="$HOME/.local/lib/python3.7/site-packages:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 # Add cargo binaries
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.luarocks/bin:$PATH"
 # Machine specific variables
 if [[ $(uname -n) == 'SpaceMonkey' ]]; then
     export MUSIC=/mnt/storage/Media/Music
@@ -107,4 +114,3 @@ elif [[ $(tty) == "/dev/tty2" ]]; then
 elif [[ $(tty) == "/dev/tty"* ]]; then
     cowsay "What are you doing here?"
 fi
-

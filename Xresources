@@ -26,7 +26,7 @@ Xft.lcdfilter: lcddefault
 *.color15:    #E6E6E6
 
 rofi.modi:              drun,run
-rofi.font:              xos4 Terminus 9
+rofi.font:              Terminus (TTF) 9
 rofi.location:          0
 rofi.color-enabled:     true
 rofi.color-window:      #232629, #808280, #ffffff
@@ -40,7 +40,7 @@ rofi.hide-scrollbar:    true
 rofi.line-margin:       4
 rofi.yoffset:           0
 rofi.xoffset:           0
-rofi.width:             18
+rofi.width:             13
 rofi.lines:             8
 
 Xcursor.theme: capitaine-cursors
