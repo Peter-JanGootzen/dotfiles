@@ -35,8 +35,7 @@
 (setq display-line-numbers-type t)
 
 ;; Enable rust-analyzer
-;; const generic support currently not enough
-;;(setq lsp-rust-server 'rust-analyzer)
+(setq lsp-rust-server 'rust-analyzer)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
