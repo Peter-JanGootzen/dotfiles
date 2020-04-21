@@ -65,6 +65,11 @@ bindsym XF86MonBrightnessUp exec light -A 10 && notify-send.sh --replace=1 Brigh
 bindsym $mod+Shift+F11 exec sudo tlp bat && notify-send.sh --replace=2 "TLP" "bat"
 bindsym $mod+Shift+F12 exec sudo tlp ac && notify-send.sh --replace=2 "TLP" "ac"
 
+# This will turn off all the screens after one second, why one second?
+# Because if you turn them off immediately, then they will instantly turn back on when you
+# unpress the keybindings, because those also count as a wake up event.
+bindsym $mod+Shift+o exec "sleep 1; xset dpms force off"
+
 # change focus vimlike
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -245,6 +250,7 @@ exec --no-startup-id mullvad-vpn
 exec --no-startup-id mpd
 exec --no-startup-id stack-client
 exec --no-startup-id signal-desktop-beta --start-in-tray
+exec --no-startup-id solaar
 
 # Autosetup my 4th workspace, this script can be found in ~/bin/workspace4
 #exec --no-startup-id workspace4

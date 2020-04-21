@@ -195,19 +195,20 @@ let g:tex_conceal='abdmg'
 
 "" Keybindings
 let mapleader=' '
-nnoremap <silent> <leader><leader> :w<CR>
+nnoremap <silent> <leader><leader> :Files<CR>
 nnoremap <silent> <leader>qw  :wq<CR>
 nnoremap <silent> <leader>bd  :bd<CR>
 nnoremap <silent> <leader>qq  :q<CR>
 nnoremap <silent> <leader>qf  :q!<CR>
 nnoremap <silent> <leader>ff  :Files<CR>
+nnoremap <silent> <leader>fs  :w<CR>
 nnoremap <silent> <leader>fg  :GFiles<CR>
 nnoremap <silent> <leader>fd  :call Fzf_dev()<CR>
 nnoremap <silent> <leader>fc  :Ag<CR>
 nnoremap <silent> <leader>bb  :Buffers<CR>
 nnoremap <silent> <leader>src :so $MYVIMRC<CR>
 nnoremap <silent> <leader>erc :edit $MYVIMRC<CR>
-nnoremap <silent> <leader>oo  :NERDTreeToggle<CR>
+nnoremap <silent> <leader>op  :NERDTreeToggle<CR>
 nnoremap <silent> <leader>sh  :GitGutterStageHunk<CR>
 nnoremap <silent> <leader>nh  :GitGutterNextHunk<CR>
 nnoremap <silent> <leader>ph  :GitGutterPrevHunk<CR>
@@ -240,3 +241,15 @@ inoremap <right> <nop>
 " Left and right can switch buffers
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
+
+" vim -b : edit binary using xxd-format!
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
