@@ -19,7 +19,7 @@
 ;; font string. You generally only need these two:
 ;; test
 (setq doom-font (font-spec :family "monospace" :size 13)
-;;(setq doom-font (font-spec :name "Cascadia Code" :size 13)
+;(setq doom-font (font-spec :name "Cascadia Code" :size 13)
       doom-variable-pitch-font (font-spec :family "sans"))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -35,7 +35,8 @@
 (setq display-line-numbers-type t)
 
 ;; Enable rust-analyzer
-(setq lsp-rust-server 'rust-analyzer)
+(setq rustic-lsp-server 'rust-analyzer)
+(setq lsp-rust-analyzer-server-command '("~/.cargo/bin/rust-analyzer"))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
