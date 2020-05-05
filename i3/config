@@ -238,6 +238,8 @@ mode "resize" {
 }
 
 # Autostart applications
+## This application fixes the lack of support for StatusNotifierItem tray icons in Polybar
+exec --no-startup-id snixembed --fork
 exec --no-startup-id compton
 exec --no-startup-id polybar main
 exec --no-startup-id nitrogen --restore
