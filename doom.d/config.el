@@ -36,7 +36,7 @@
 
 ;; Enable rust-analyzer
 (setq rustic-lsp-server 'rust-analyzer)
-(setq lsp-rust-analyzer-server-command '("~/.cargo/bin/rust-analyzer"))
+;(setq lsp-rust-analyzer-server-command '("~/.cargo/bin/rust-analyzer"))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
