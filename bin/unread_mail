@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(find ~/.mail -wholename */INBOX/new/* | wc -l)
+echo $(find ~/.local/share/mail -wholename */INBOX/new/* | wc -l)

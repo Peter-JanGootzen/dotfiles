@@ -24,7 +24,7 @@
     "editor.minimap.enabled": false,
     "window.menuBarVisibility": "toggle",
     "cosmosDB.showSavePrompt": false,
-    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontSize": 13,
     "vim.statusBarColorControl": false,
     "workbench.colorCustomizations": {
         "editor.background": "#232629",
@@ -131,4 +131,9 @@
     "gitlens.liveshare.allowGuestAccess": false,
     "editor.fontSize": 13,
     "editor.fontWeight": "500",
+    "editor.find.addExtraSpaceOnTop": false,
+    "liveshare.nameTagVisibility": "Never",
+    "rust-analyzer.enableEnhancedTyping": false,
+    "workbench.colorTheme": "Material Theme Darker High Contrast",
+    "git.confirmSync": false,
 }

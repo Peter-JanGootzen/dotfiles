@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font Terminus {TTF) 9
+font Hasklig 10
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -33,15 +33,13 @@ bindsym $mod+Return exec st
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -modi run -show drun -show-icons
-bindsym $mod+p exec --no-startup-id bwmenu
+bindsym $mod+d exec --no-startup-id "rofi -modi drun,run,emoji -show drun -show-icons"
 
+# start pavucontrol for audio knobs
 bindsym $mod+Ctrl+m exec pavucontrol
 
-# Screenshot keybindings
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print exec --no-startup-id i3-scrot -s
+# Screenshot keybindings, I'm currently using gnome-screenshot because i3-scrot is broken
+bindsym Print exec --no-startup-id gnome-screenshot --interactive
 
 # i3lock keybinding
 bindsym $mod+Escape exec --no-startup-id xtrlock
@@ -52,10 +50,9 @@ bindsym $mod+Shift+F2 exec --no-startup-id screen-home.sh
 bindsym $mod+Shift+F3 exec --no-startup-id screen-switch.sh
 
 # Music keybindings
-bindsym XF86AudioPlay exec mpc toggle
-bindsym XF86AudioNext exec mpc next
-bindsym XF86AudioPrev exec mpc prev
-bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Backlight
 bindsym XF86MonBrightnessDown exec light -U 10 && notify-send.sh --replace=1 Brightness $(python -c "print(round($(light -G)))")
@@ -98,6 +95,10 @@ bindsym $mod+Shift+Right move right 40px
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+
+# move windows between monitors
+bindsym $mod+Shift+greater move container to output right
+bindsym $mod+Shift+less move container to output left
 
 # split orientation
 bindsym $mod+g split h;exec notify-send 'tile horizontally'
@@ -239,9 +240,7 @@ mode "resize" {
 
 # Autostart applications
 ## This application fixes the lack of support for StatusNotifierItem tray icons in Polybar
-exec --no-startup-id snixembed --fork
-exec --no-startup-id compton
-exec --no-startup-id polybar main
+exec --no-startup-id picom
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id udiskie
@@ -249,10 +248,10 @@ exec --no-startup-id nm-applet
 exec --no-startup-id pa-applet
 exec --no-startup-id redshift-gtk
 exec --no-startup-id mullvad-vpn
-exec --no-startup-id mpd
 exec --no-startup-id stack-client
 exec --no-startup-id signal-desktop-beta --start-in-tray
-exec --no-startup-id solaar
+exec --no-startup-id blueman-applet
+exec --no-startup-id polybar main
 
 # Autosetup my 4th workspace, this script can be found in ~/bin/workspace4
 #exec --no-startup-id workspace4

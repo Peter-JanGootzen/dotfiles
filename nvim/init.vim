@@ -40,7 +40,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}     " Language Server Protocol c
 "Plug 'SirVer/ultisnips'                             " Snippets engine
 "Plug 'honza/vim-snippets'                           " Snippets pack
 Plug 'rust-lang/rust.vim'                           " Rust support
-Plug 'lervag/vimtex'                                " LaTeX support
 
 "-------------------=== Other ===-------------------------------
 Plug 'luochen1990/rainbow'                          " Rainbow Parentheses
@@ -122,6 +121,9 @@ let g:rainbow_active = 1
 " Restricting mutt mail files to 72 characters text width
 au BufRead ~/.config/mutt/tmp set tw=72
 
+autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
+autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
+
 "--------------=== coc.nvim settings ===----------------
 " Better display for messages
 set cmdheight=2
@@ -182,16 +184,6 @@ augroup end
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Polygot
-let g:polyglot_disabled = ['latex']
-
-" VimTex
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
 
 "" Keybindings
 let mapleader=' '

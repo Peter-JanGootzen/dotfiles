@@ -40,16 +40,16 @@ rofi.hide-scrollbar:    true
 rofi.line-margin:       4
 rofi.yoffset:           0
 rofi.xoffset:           0
-rofi.width:             13
+rofi.width:             15
 rofi.lines:             8
 
 Xcursor.theme: capitaine-cursors
 Xcursor.size:  0
 
-; Currently using st with basicly the same settings
-; My st fork can be found over at https://github.com/Peter-JanGootzen/st
-URxvt.font: xft:xos4 Terminus:size=12
-URxvt.boldFont: xft:xos4 Terminus:bold:size=12
+// Currently using st with basicly the same settings
+// My st fork can be found over at https://github.com/Peter-JanGootzen/st
+URxvt.font: xft:Terminus (TTF):size=9
+URxvt.boldFont: xft:Terminus (TTF):bold:size=9
 URxvt.internalBorder: 10
 URxvt.scrollBar:                      false
 URxvt.mouseWheelScrollPage:           false

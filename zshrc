@@ -13,9 +13,12 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensiti
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 zstyle ':completion:*' rehash true                              # automatically find new executables in path
 HISTFILE=$HOME/.zhistory
-HISTSIZE=1000
-SAVEHIST=500
+HISTSIZE=10000
+SAVEHIST=10000
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don\'t consider certain characters part of the word
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+
 
 ## Alias section
 alias cp="cp -i"                                                # Confirm before overwriting something
@@ -29,44 +32,55 @@ alias grop="ag --nobreak --nonumbers --noheading . | fzf"
 alias cpu="watch -n.5 'cat /proc/cpuinfo | grep \"^[c]pu MHz\"'"
 alias q="exit"
 alias m="ncmpcpp"
+alias k="keyboard"
 alias vi="nvim"
 alias vim="nvim"
+alias rm="trash"
 # Machine specific aliases
 if [[ $(uname -n) == 'SpaceMonkey' ]]; then
     alias alsamixer="alsamixer -c 0"
 fi
 
-## Plugins section: Enable fish style features
+# Plugins section: Enable fish style features
 # Use syntax highlighting
-[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Use history substring search
-[ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ] && source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-# Use autosuggestion
-#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-# vi mode
+[ -f /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh ] && \
+    source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+# Use autosuggestion like Fish
+# Currently don't use this because it contains an annoying bug
+#[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && \
+#    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+# VI mode
 bindkey -v
 #By default, there is a 0.4 second delay after you hit the <ESC> key and when the mode change is registered.
-#This results in a very jarring and frustrating transition between modes. Let's reduce this delay to 0.1 seconds.
+#This results in a very jarring and frustrating transition between modes. The next line sets that delay to 0.1 seconds
 export KEYTIMEOUT=1
+#
+# F12 - Clear the Screen
+bindkey "^[[24~" clear-screen
+
+
 # FZF
-## Keybindings and completion
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && \
+    source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && \
+    source /usr/share/fzf/completion.zsh
+## fzf cd plugin, use tab
+[ -f $HOME/.config/zsh/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh ] && \
+    source $HOME/.config/zsh/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
 ## Enable fd as the base find command, faster and respects .gitignore, --type f set the search mode to only files
 export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+
 # Theme
-[ -f $HOME/.config/zsh/themes/minimal/minimal.zsh ] && source $HOME/.config/zsh/themes/minimal/minimal.zsh
-# Plugins
-## fzf cd plugin, use tab
-[ -f $HOME/.config/zsh/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh ] && source $HOME/.config/zsh/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
+[ -f $HOME/.config/zsh/themes/minimal/minimal.zsh ] && \
+    source $HOME/.config/zsh/themes/minimal/minimal.zsh
 
-
-# F12 - Clear the Screen
-bindkey "^[[24~" clear-screen
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=gtk2
@@ -77,18 +91,18 @@ export BROWSER=/usr/bin/firefox
 export ANDROID_HOME=$HOME/Android/Sdk/
 export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
 # CMake settings
-export CMAKE_GENERATOR=Ninja
-export CXX=clang++
+#export CXX=clang++
 # Add ruby gem bins
 export PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH
 # Add composer(php) bin folder to the path
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
 # Add my bin folder to the path
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/apps:$PATH
 # Add dotnet core tools to the path
 export PATH="$PATH:$HOME/.dotnet/tools"
-export WINEARCH=win32
-export WINEPREFIX=$HOME/.wine
+export WINEARCH=win64
+export WINEPREFIX=$HOME/.wine64
 export JAVA_HOME=/usr/lib/jvm/default
 export ANDROID_HOME=$HOME/.android/sdk
 # Disable the stupid dotnet telemetry
@@ -107,10 +121,12 @@ if [[ $(uname -n) == 'SpaceMonkey' ]]; then
     export MUSIC=/mnt/storage/Media/Music
 fi
 
+
+# startup
 if [ $(tty) = "/dev/tty1" ]; then
     exec startx
 elif [[ $(tty) == "/dev/tty2" ]]; then
     exec nvidia-xrun
 elif [[ $(tty) == "/dev/tty"* ]]; then
-    cowsay "What are you doing here?"
+    cowsay "What are you doing here?" | lolcat
 fi

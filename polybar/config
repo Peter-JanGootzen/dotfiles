@@ -37,7 +37,7 @@ border-size = 0
 border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 1
 
 module-margin-left = 1
 module-margin-right = 1
@@ -48,8 +48,8 @@ font-0 = Terminus (TTF):pixelsize=9;1
 font-1 = Siji:pixelsize=10;1
 
 modules-left = i3
-modules-center = mpd
-modules-right = unread_mail current_draw gpu battery date
+modules-center =
+modules-right = unread_mail current_draw temperature gpu battery date
 
 tray-position = right
 tray-padding = 2
@@ -71,6 +71,7 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 enable-ipc = true
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -311,8 +312,12 @@ animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
+interval = 5
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input 
 thermal-zone = 0
-warn-temperature = 60
+
+base-temperature = 40
+warn-temperature = 70
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
@@ -360,7 +365,7 @@ type = custom/script
 
 exec = current_draw
 exec-if = is_discharging
-interval = 10
+interval = 5
 
 label = %output%W
 format-prefix = 
