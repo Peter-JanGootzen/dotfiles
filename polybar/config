@@ -49,7 +49,7 @@ font-1 = Siji:pixelsize=10;1
 
 modules-left = i3
 modules-center =
-modules-right = unread_mail current_draw temperature gpu battery date
+modules-right = unread_mail bt_headphones current_draw temperature gpu battery date
 
 tray-position = right
 tray-padding = 2
@@ -397,6 +397,18 @@ hook-0 = unread_mail
 
 format =  <output>
 initial = 1
+
+[module/bt_headphones]
+type = custom/script
+
+exec = xm3_connected
+
+interval = 3
+
+label = %output%
+format-prefix= 
+
+click-left = xm3_connect_disconnect
 
 [settings]
 screenchange-reload = true

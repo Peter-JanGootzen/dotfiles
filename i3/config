@@ -252,6 +252,7 @@ exec --no-startup-id stack-client
 exec --no-startup-id signal-desktop-beta --start-in-tray
 exec --no-startup-id blueman-applet
 exec --no-startup-id polybar main
+exec --no-startup-id pulseeffects --gapplication-service
 
 # Autosetup my 4th workspace, this script can be found in ~/bin/workspace4
 #exec --no-startup-id workspace4

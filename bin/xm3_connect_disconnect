@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ $(xm3_connected) ==  ]; then
+    bluetoothctl disconnect $(echo $XM3_DEVICE_ID)
+else
+    bluetoothctl connect $(echo $XM3_DEVICE_ID)
+fi

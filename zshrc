@@ -82,6 +82,9 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     source $HOME/.config/zsh/themes/minimal/minimal.zsh
 
 
+# For Firefox VA-API hardware acceleration
+export MOZ_WEBRENDER=1
+export MOZ_X11_EGL=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=gtk2
 export GTK2_RC_FILES=$HOME/.gtkrc-2.0
@@ -116,10 +119,12 @@ export PATH="$HOME/.local/bin:$PATH"
 # Add cargo binaries
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.luarocks/bin:$PATH"
+
 # Machine specific variables
 if [[ $(uname -n) == 'SpaceMonkey' ]]; then
     export MUSIC=/mnt/storage/Media/Music
 fi
+export XM3_DEVICE_ID=94:DB:56:18:23:38
 
 
 # startup

@@ -81,7 +81,6 @@ set clipboard=unnamedplus                   " enable systemwide clipboard
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
 set relativenumber
-nnoremap <leader>sr :set relativenumber!<CR>
 
 " Search settings
 set incsearch                                 " incremental search
@@ -118,8 +117,8 @@ let g:closetag_filenames = '*.html,*.vue'
 " Rain parentheses
 let g:rainbow_active = 1
 
-" Restricting mutt mail files to 72 characters text width
-au BufRead ~/.config/mutt/tmp set tw=72
+" Restricting mutt mail files to 120 characters text width
+au BufRead ~/.config/mutt/tmp set tw=120
 
 autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
 autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
@@ -186,6 +185,7 @@ augroup end
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 "" Keybindings
+"" These keybindings mimick Doom emacs
 let mapleader=' '
 nnoremap <silent> <leader><leader> :Files<CR>
 nnoremap <silent> <leader>qw  :wq<CR>
@@ -206,6 +206,7 @@ nnoremap <silent> <leader>nh  :GitGutterNextHunk<CR>
 nnoremap <silent> <leader>ph  :GitGutterPrevHunk<CR>
 nnoremap <silent> <leader>cf  :!cargo fmt<CR>
 nnoremap <silent> <leader>cc  :call SwitchHeaderAndSource()<CR>
+nnoremap <silent> <leader>sr  :set relativenumber!<CR>
 nnoremap <silent> <leader>k   :call <SID>show_documentation()<CR>
 nnoremap <silent> <leader>a   :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <leader>c   :<C-u>CocList commands<cr>
