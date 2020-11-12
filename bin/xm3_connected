@@ -2,7 +2,7 @@
 
 info=$(bluetoothctl info $(echo $XM3_DEVICE_ID) | grep "Connected")
 if [[ $info == *"yes"* ]]; then
-    echo 
+    echo 
 else
-    echo 
+    echo 
 fi

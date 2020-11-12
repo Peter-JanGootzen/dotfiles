@@ -19,8 +19,13 @@
 ;; font string. You generally only need these two:
 ;; test
 (setq doom-font (font-spec :family "monospace" :size 13)
-;(setq doom-font (font-spec :name "Cascadia Code" :size 13)
+;(setq doom-font (font-spec :name "Terminus (TTF)" :size 11)
+      doom-big-font (font-spec :family "monospace" :size 20)
       doom-variable-pitch-font (font-spec :family "sans"))
+
+(setq dpi (string-to-number (getenv "DPI")))
+(if (> dpi 96) ;; i.e. high dpi
+  (doom-big-font-mode))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the

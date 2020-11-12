@@ -1,0 +1,19 @@
+configuration {
+	modi: "drun,run";
+	width: 15;
+	lines: 8;
+	font: "Hasklig 9";
+	location: 0;
+	padding: 10;
+	yoffset: 0;
+	xoffset: 0;
+        line-margin: 4;
+	separator-style: "solid";
+	hide-scrollbar: true;
+	fullscreen: false;
+        show-icons: true;
+	color-normal: "#212121, #ffffff, #212121, #808280, #ffffff";
+	color-urgent: "#212121, #ffffff, #212121, #ffffff, #000000";
+	color-active: "#212121, #ffffff, #212121, #808280, #ffffff";
+	color-window: "#212121, #808280, #ffffff";
+}

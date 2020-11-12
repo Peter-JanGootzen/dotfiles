@@ -8,8 +8,8 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 2
-new_float normal
+default_border pixel 2
+default_floating_border normal
 
 # Hide borders
 hide_edge_borders none
@@ -27,27 +27,27 @@ font Hasklig 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id "rofi -modi drun,run,emoji -show drun -show-icons"
+bindsym $mod+e exec --no-startup-id "rofi -modi drun,run,emoji -show run -show-icons"
 
 # start pavucontrol for audio knobs
 bindsym $mod+Ctrl+m exec pavucontrol
 
 # Screenshot keybindings, I'm currently using gnome-screenshot because i3-scrot is broken
-bindsym Print exec --no-startup-id gnome-screenshot --interactive
+bindsym Print exec --no-startup-id screenshot-select
 
 # i3lock keybinding
 bindsym $mod+Escape exec --no-startup-id xtrlock
 
 # Monitor keybindings
-bindsym $mod+Shift+F1 exec --no-startup-id screen-laptop.sh
-bindsym $mod+Shift+F2 exec --no-startup-id screen-home.sh
-bindsym $mod+Shift+F3 exec --no-startup-id screen-switch.sh
+bindsym $mod+Shift+F2 exec --no-startup-id desktop.sh
+bindsym $mod+Shift+F3 exec --no-startup-id switch.sh
 
 # Music keybindings
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -239,23 +239,18 @@ mode "resize" {
 }
 
 # Autostart applications
-## This application fixes the lack of support for StatusNotifierItem tray icons in Polybar
+exec --no-startup-id monitor-setup.sh
 exec --no-startup-id picom
-exec --no-startup-id nitrogen --restore
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id udiskie
 exec --no-startup-id nm-applet
 exec --no-startup-id pa-applet
 exec --no-startup-id redshift-gtk
 exec --no-startup-id mullvad-vpn
-exec --no-startup-id stack-client
+exec --no-startup-id nextcloud
 exec --no-startup-id signal-desktop-beta --start-in-tray
 exec --no-startup-id blueman-applet
-exec --no-startup-id polybar main
 exec --no-startup-id pulseeffects --gapplication-service
-
-# Autosetup my 4th workspace, this script can be found in ~/bin/workspace4
-#exec --no-startup-id workspace4
 
 # Theme colors
 # class                 border  backgr. text    indic.  child_border

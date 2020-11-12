@@ -1,5 +1,5 @@
 #!/bin/bash
-echo - | awk "{printf \"%.2f\", \
+echo - | awk "{printf \"%.1f\", \
 $(( \
   $(cat /sys/class/power_supply/BAT0/current_now) * \
   $(cat /sys/class/power_supply/BAT0/voltage_now) \
