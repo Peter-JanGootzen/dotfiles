@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font Hasklig 10
+font pango: Hasklig 10
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -46,6 +46,7 @@ bindsym Print exec --no-startup-id screenshot-select
 bindsym $mod+Escape exec --no-startup-id xtrlock
 
 # Monitor keybindings
+bindsym $mod+Shift+F1 exec --no-startup-id laptop.sh
 bindsym $mod+Shift+F2 exec --no-startup-id desktop.sh
 bindsym $mod+Shift+F3 exec --no-startup-id switch.sh
 
@@ -203,6 +204,8 @@ for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Main"] floating enable # Java, make the class with main() called Main
 for_window [class="Doem"] floating enable # Java, make the class with main() called Main
 for_window [title="QEMU"] floating enable floating_maximum_size 1680 x 1050 border normal
+# This one is for the Jitsi floating always on top thingy
+for_window [title="AlwaysOnTop"] floating enable sticky
 
 
 # switch to workspace with urgent window automatically
@@ -250,7 +253,6 @@ exec --no-startup-id mullvad-vpn
 exec --no-startup-id nextcloud
 exec --no-startup-id signal-desktop-beta --start-in-tray
 exec --no-startup-id blueman-applet
-exec --no-startup-id pulseeffects --gapplication-service
 
 # Theme colors
 # class                 border  backgr. text    indic.  child_border

@@ -2,6 +2,8 @@
 
 if [ $(xm3_connected) ==  ]; then
     bluetoothctl disconnect $(echo $XM3_DEVICE_ID)
+    pkill pulseeffects
 else
     bluetoothctl connect $(echo $XM3_DEVICE_ID)
+    pulseeffects --gapplication-service
 fi
