@@ -80,8 +80,6 @@ set scrolloff=5                             " let 5 lines before/after cursor du
 set clipboard=unnamedplus                   " enable systemwide clipboard
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
 
-set relativenumber
-
 " Search settings
 set incsearch                                 " incremental search
 set hlsearch                                  " highlight search results

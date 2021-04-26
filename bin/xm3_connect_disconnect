@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $(xm3_connected) ==  ]; then
+if [ $(xm3_connected) ==  ]; then
     bluetoothctl disconnect $(echo $XM3_DEVICE_ID)
     pkill pulseeffects
 else

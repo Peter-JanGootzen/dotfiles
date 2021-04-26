@@ -42,7 +42,6 @@
         "button.background": "#232629",
         "editorPane.background": "#232629",
         "welcomePage.background": "#232629",
-        "selection.background": "#232629",
         "debugToolBar.background": "#232629",
         "menu.separatorBackground": "#232629",
         "editorBracketMatch.background": "#232629",
@@ -134,6 +133,6 @@
     "editor.find.addExtraSpaceOnTop": false,
     "liveshare.nameTagVisibility": "Never",
     "rust-analyzer.enableEnhancedTyping": false,
-    "workbench.colorTheme": "Material Theme Darker High Contrast",
     "git.confirmSync": false,
+    "latex-workshop.view.pdf.viewer": "tab",
 }

@@ -23,7 +23,7 @@
       doom-big-font (font-spec :family "monospace" :size 20)
       doom-variable-pitch-font (font-spec :family "sans"))
 
-(setq dpi (string-to-number (getenv "DPI")))
+(setq dpi (string-to-number (x-get-resource "dpi" "")))
 (if (> dpi 96) ;; i.e. high dpi
   (doom-big-font-mode))
 

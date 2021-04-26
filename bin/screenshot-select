@@ -1,2 +1,2 @@
 #!/bin/sh
-maim -s -u | tee ~/Pictures/Screenshots/$(date +"%m-%d-%y_%H:%M").png | xclip -selection clipboard -t image/png
+maim -s -u | tee ~/Pictures/Screenshots/$(date +"%m-%d-%y_%H:%M:%S").png | xclip -selection clipboard -t image/png
